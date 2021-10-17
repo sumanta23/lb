@@ -4,6 +4,14 @@ Leaderboard::Leaderboard()
 {
 }
 
+void Leaderboard::printLB()
+{
+    for (const auto& [key, value] : lookup_) {
+        std::cout << key << " = " << value << std::endl;
+    }
+    std::cout << "\n";
+}
+
 void Leaderboard::addScore(int playerId, int score)
 {
     lookup_[playerId] += score;

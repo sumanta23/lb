@@ -8,6 +8,8 @@ public:
 
     void addScore(int playerId, int score);
 
+    void printLB();
+
     int top(int K);
 
     void reset(int playerId);
@@ -15,5 +17,5 @@ public:
     int rank(int playerId);
 
 private:
-    std::map<int, int> lookup_;
+    std::unordered_map<int, int> lookup_;
 };
