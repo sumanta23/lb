@@ -1,0 +1,7 @@
+{
+    "primaryNodes": ["127.0.0.1:1070","127.0.0.1:1071","127.0.0.1:1072"],
+    "runtime": "/tmp/lb/config",
+    "storage": "/tmp/lb/storage",
+    "journalPath": "/tmp/lb/journal",
+    "journalWriteInterval": 5
+}
