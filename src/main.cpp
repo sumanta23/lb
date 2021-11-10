@@ -6,8 +6,6 @@
 using namespace std;
 using json = nlohmann::json;
 
-//g++ -I./third/ -std=c++11 -Wall -Wextra -pthread test.cpp -o test
-
 Leaderboard lb;
 
 int main(void)
@@ -23,8 +21,8 @@ int main(void)
     auto user = j["user"];
     auto point = j["point"];
     cout << user << point<< endl;
-	  lb.addScore(3, 9);
-    res.set_content("Success", "text/plain");
+	  lb.addScore(user, point);
+    res.set_content(to_string(lb.getScore(user)), "text/plain");
   });
 
   svr.Get("/hi/", [](const Request& req, Response& res) {
