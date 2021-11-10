@@ -3,21 +3,21 @@ CXX=g++
 LINK=${CXX}
 
 # define any compile-time flags
-CXXFLAGS=-g -Wall -Wextra -fPIC -pedantic-errors -std=c++2a -fdiagnostics-color=always
+CXXFLAGS=-g -Wall -Wextra -fPIC -pedantic-errors -std=c++2a -fdiagnostics-color=always -pthread
 
 # define any directories containing header files other than /usr/include
 #
-INCLUDES=-I.  -I`pwd`/src/include
+INCLUDES=-I.  -I`pwd`/src/include -I./third/
 
 # define library paths in addition to /usr/lib
 #   if I wanted to include libraries not in /usr/lib I'd specify
 #   their path using -Lpath, something like:
-LDFLAGS=-std=c++2a -Wl,-rpath, -lc++
+LDFLAGS=-std=c++2a -Wl,-rpath, -lc++ -lstdc++fs
 
 # define any libraries to link into executable:
 #   if I want to link in libraries (libx.so or libx.a) I use the -llibname 
 #   option, something like (this will link in libmylib.so and libm.so:
-LDLIBS=-lm -lstdc++
+LDLIBS=-lm -lstdc++ -lstdc++fs
 
 SRC =$(wildcard src/LeaderBoard/*.cpp src/*.cpp)
 OBJ=$(addsuffix .o, $(basename $(SRC)))
