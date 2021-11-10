@@ -17,10 +17,12 @@ int main(void)
   Server svr;
 
   svr.Post("/hi/", [](const Request& req, Response& res) {
-		cout << req.body<< endl;
-    auto j = json::parse(res);
+    const char * body = req.body.c_str();
+		cout << body<< endl;
+    auto j = json::parse(body);
     auto user = j["user"];
-    auto point = std::stoi(j["point"]);
+    auto point = j["point"];
+    cout << user << point<< endl;
 	  lb.addScore(3, 9);
     res.set_content("Success", "text/plain");
   });
