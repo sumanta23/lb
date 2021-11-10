@@ -1,7 +1,5 @@
 # define the C compiler to use
-ifeq (${CXX},)
 CXX=g++
-endif
 LINK=${CXX}
 
 # define any compile-time flags
@@ -14,12 +12,12 @@ INCLUDES=-I.  -I`pwd`/src/include
 # define library paths in addition to /usr/lib
 #   if I wanted to include libraries not in /usr/lib I'd specify
 #   their path using -Lpath, something like:
-LDFLAGS=-static-libgcc -std=c++2a -Wl,-rpath,
+LDFLAGS=-std=c++2a -Wl,-rpath, -lc++
 
 # define any libraries to link into executable:
 #   if I want to link in libraries (libx.so or libx.a) I use the -llibname 
 #   option, something like (this will link in libmylib.so and libm.so:
-LDLIBS=-lm -lstdc++ -static-libgcc
+LDLIBS=-lm -lstdc++
 
 SRC =$(wildcard src/LeaderBoard/*.cpp src/*.cpp)
 OBJ=$(addsuffix .o, $(basename $(SRC)))
