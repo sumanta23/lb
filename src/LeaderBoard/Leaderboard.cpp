@@ -6,8 +6,8 @@ Leaderboard::Leaderboard()
 
 void Leaderboard::printLB()
 {
-	for (const auto& [key, value] : lookup_) {
-		std::cout << key << " = " << value << std::endl;
+	for (auto& it : lookup_) {
+		std::cout << it.first << " = " << it.second << std::endl;
 	}
 	std::cout << "\n";
 }
