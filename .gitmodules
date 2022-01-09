@@ -4,7 +4,3 @@
 [submodule "third/cpp-httplib"]
 	path = third/cpp-httplib
 	url = https://github.com/yhirose/cpp-httplib
-[submodule "third/nlohmann"]
-	path = third/nlohmann
-	url = https://github.com/nlohmann/json.git
-	branch = v3.10.5
