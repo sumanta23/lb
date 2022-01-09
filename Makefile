@@ -3,7 +3,7 @@ CXX=g++
 LINK=${CXX}
 
 # define any compile-time flags
-CXXFLAGS=-g -Wall -Wextra -fPIC -pedantic-errors -std=c++11 -fdiagnostics-color=always -pthread
+CXXFLAGS=-g -Wall -Wextra -fPIC -pedantic-errors -std=c++11 -fdiagnostics-color=always -pthread -O3
 
 # define any directories containing header files other than /usr/include
 #
@@ -24,11 +24,12 @@ LIBS=-pthread -lpthread -L$(LIBPATH)
 
 SRC =$(wildcard src/LeaderBoard/*.cpp src/*.cpp)
 OBJ=$(addsuffix .o, $(basename $(SRC)))
-TARGET=app
+TARGET=myapp
 
 BUILD_DIR=build
 BIN_DIR=$(BUILD_DIR)/bin
-OUTPUT=$(BIN_DIR)/app
+OUTPUT=$(BIN_DIR)/myapp
+PREPROCESSORFLAGS=-DCPPHTTPLIB_THREAD_POOL_COUNT=100
 
 
 .PHONY: all clean
@@ -38,7 +39,7 @@ $(TARGET): $(OBJ)
 	$(LINK) $(LDFLAGS) $(INCLUDES) $^ -o "$@" $(LIBS)
 
 %.o: %.cpp
-	$(CXX) -c $(CXXFLAGS) $(INCLUDES) -o "$@" "$<"
+	$(CXX) -c $(CXXFLAGS) $(INCLUDES) $(PREPROCESSORFLAGS) -o "$@" "$<"
 
 clean:
 	rm -f $(TARGET)

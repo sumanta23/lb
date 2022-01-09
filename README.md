@@ -1,4 +1,5 @@
 # This is a distributed leaderboard
+git submodule update --recursive --remote
 
 ## Features
 

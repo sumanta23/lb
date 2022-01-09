@@ -28,8 +28,9 @@ int main(void)
     string user = j["user"].get<std::string>();;
     int point = j["point"].get<int>();;
     lb.addScore(user, point);
-    res.set_content(to_string(lb.getScore(user)), "text/plain");
-    res.set_content(user, "text/plain");
+    cout << user << point << endl;
+    string result = to_string(lb.getScore(user));
+    res.set_content(result, "text/plain");
   });
 
   svr.Get("/hi/", [](const Request& req, Response& res) {
