@@ -1,20 +1,23 @@
 cmake_minimum_required(VERSION 3.5.1)
 
 project(samlb LANGUAGES C CXX)
+set (CMAKE_CXX_STANDARD 11)
 
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY $ENV{PROJECT_HOME}/lib)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY $ENV{PROJECT_HOME}/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY $ENV{PROJECT_HOME}/bin)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/target/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/target/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/target/bin)
 
-include_directories($ENV{PROJECT_HOME}/)
-include_directories($ENV{PROJECT_HOME}/src/include/)
-include_directories($ENV{PROJECT_HOME}/third/spdlog/include/)
-include_directories($ENV{PROJECT_HOME}/third/nlohmann/)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src/include/)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/third/)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/third/spdlog/include/)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/third/cpp-httplib/)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/third/nlohmann/)
 
 
 
-add_executable(samlb src/main.c src/LeaderBoard/Leaderboard.cpp )
+add_executable(samlb src/main.cpp src/LeaderBoard/Leaderboard.cpp )
 
 target_link_libraries(samlb
 )
