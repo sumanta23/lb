@@ -15,7 +15,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/third/spdlog/include/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/third/cpp-httplib/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/third/nlohmann/)
 
-
+add_definitions(-DCPPHTTPLIB_THREAD_POOL_COUNT)
 
 add_executable(samlb src/main.cpp src/LeaderBoard/Leaderboard.cpp )
 

@@ -3,6 +3,7 @@
 #include <httplib.h>
 #include "LeaderBoard/Leaderboard.h"
 #include "json.hpp"
+#include "log.h"
 
 using namespace std;
 using json = nlohmann::json;
@@ -12,7 +13,7 @@ Leaderboard lb;
 Server svr;
 
 void signalHandler( int signum ) {
-  cout << "Interrupt signal (" << signum << ") received.\n";
+  WARN("Interrupt signal ("<< signum <<") received. stopping server");
   svr.stop();
   exit(signum);
 }
@@ -34,8 +35,10 @@ int main(void)
   });
 
   svr.Get("/hi/", [](const Request& req, Response& res) {
+		INFO("request "<< req.method <<" "<<req.path <<" from " <<req.remote_addr<<":"<<req.remote_port);
     res.set_content("Hello World!", "text/plain");
   });
 
+  DEBUG("starting server on 1234 port");
   svr.listen("0.0.0.0", 1234);
 }
